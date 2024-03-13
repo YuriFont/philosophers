@@ -9,7 +9,8 @@
 
 typedef struct s_philo
 {
-	int	id;
+	int		id;
+	pthread_t	thread;
 }	t_philo;
 
 int	ft_atoi(char *str);

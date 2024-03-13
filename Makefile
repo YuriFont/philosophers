@@ -9,4 +9,5 @@ RM = rm -rf
 
 all: $(NAME)
 
-
+$(NAME):
+	$(CC) $(CFLAGS) $(PHILOSOPHERS)

@@ -10,7 +10,7 @@ void	computation(void *add)
 		printf("%d", (long)add++);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	pthread_t	thr1;
 	pthread_t	thr2;
