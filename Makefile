@@ -1,6 +1,6 @@
 NAME = philosophers
 SOURCE = ./source/
-PHILOSOPHERS = $(SOURCE)philosophers.c\
+PHILOSOPHERS = $(SOURCE)philosophers.c
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
