@@ -1,24 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosophers.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 10:56:17 by yufonten          #+#    #+#             */
+/*   Updated: 2024/03/14 10:56:36 by yufonten         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
-#include <stdio.h>
-
-void	computation(void *add)
-{
-	int	i;
-
-	i = 10;
-	while (add <= i)
-		printf("%d", (long)add++);
-}
 
 int	main(int ac, char **av)
 {
-	pthread_t	thr1;
-	pthread_t	thr2;
-
-	long	values1 = 1;
-	long	values2 = 2;
-
-	computation((void *) &values1);
-	computation((void *) &values2);
+	if (ac < 5)
+	{
+		printf("Wrong initialization\nEx:\n")
+	}
 	return (0);
 }

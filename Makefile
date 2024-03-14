@@ -1,8 +1,6 @@
 NAME = philosophers
 SOURCE = ./source/
-PHILOSOPHERS = $(SOURCE)philo.c/
-LIBFT = ./libraries/libft/
-LIBFT_A = $(LIBFT)libft.a
+PHILOSOPHERS = $(SOURCE)philosophers.c\
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
@@ -10,4 +8,13 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(PHILOSOPHERS)
+	$(CC) $(CFLAGS) $(PHILOSOPHERS) -o $(NAME)
+
+clean:
+	$(RM) $(NAME)
+
+fclean: clean
+
+re: fclean all
+
+.PHONY: all clean fclean re
