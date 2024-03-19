@@ -22,9 +22,19 @@
 typedef struct s_philo
 {
 	int		id;
-	pthread_t	thread;
 }	t_philo;
 
+typedef struct s_sapien
+{
+	int	n_philo;
+	int	t_die;
+	int	t_eat;
+	int	t_sleep;
+	int	n_eats;
+}	t_sapien;
+
 int	ft_atoi(char *str);
+int	check_num_argv(int ac);
+
 
 #endif

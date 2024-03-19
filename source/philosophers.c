@@ -12,26 +12,13 @@
 
 #include "philosophers.h"
 
-int	check_num_argv(int ac)
-{
-	if (ac < 5)
-	{
-		printf("Error: few arguments\n");
-		return (1);
-	}
-	else if (ac > 6)
-	{
-		printf("Error: many arguments\n");
-		return (1);
-	}
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
-	(void)av;
+	t_sapien	p;
+
 	if (check_num_argv(ac))
 		return (1);
-	printf("Foi.\n");
+	if (check_args(av))
+		return (1);
 	return (0);
 }
