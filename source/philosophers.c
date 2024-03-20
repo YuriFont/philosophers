@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (check_num_argv(ac))
 		return (1);
-	if (check_args(av))
+	if (check_args(&p, av))
 		return (1);
 	return (0);
 }

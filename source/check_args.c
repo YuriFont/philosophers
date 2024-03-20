@@ -27,7 +27,7 @@ int	check_num_argv(int ac)
 	return (0);
 }
 
-int check_args(char **av, t_sapien *p)
+int	check_args(t_sapien *p, char **av)
 {
 	if (ft_atoi(av[1]) < 1)
 		return (1);
@@ -38,8 +38,9 @@ int check_args(char **av, t_sapien *p)
 	if (ft_atoi(av[4]) < 0)
 		return (1);
 	len = ft_strlen(av[5]) - 1;
-	if (ft_atoi(av[5]) > 0 && av[5] != NULL &&
-		av[5][0] == '[' && av[5][len] == ']')
-		p->n_eats = ft_atoi(av[5]);
+	if (av[5] != NULL && (av[5][0] != '[' || av[5][len] != ']'))
 		return (1);
+	if (av[5] != NULL && ft_atoi(av[5] < 0))
+		return (1);
+	return (0);
 }
