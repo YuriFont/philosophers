@@ -24,7 +24,6 @@ typedef pthread_mutex_t	t_mut;
 typedef struct s_philo
 {
 	int		id;
-	int		n_eats;
 }	t_philo;
 
 typedef struct s_fork
@@ -40,6 +39,7 @@ typedef struct s_sapien
 	int	t_eat;
 	int	t_sleep;
 	t_philo	*philos;
+	t_fork	*forks;
 }	t_sapien;
 
 int	ft_atoi(char *str);
