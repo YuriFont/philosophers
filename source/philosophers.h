@@ -19,10 +19,19 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+typedef pthread_mutex_t	t_mut;
+
 typedef struct s_philo
 {
 	int		id;
+	int		n_eats;
 }	t_philo;
+
+typedef struct s_fork
+{
+	t_mut	fork;
+	int	fork_id;
+}	t_fork;
 
 typedef struct s_sapien
 {
@@ -30,11 +39,10 @@ typedef struct s_sapien
 	int	t_die;
 	int	t_eat;
 	int	t_sleep;
-	int	n_eats;
+	t_philo	*philos;
 }	t_sapien;
 
 int	ft_atoi(char *str);
 int	check_num_argv(int ac);
-
 
 #endif
