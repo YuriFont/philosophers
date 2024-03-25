@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/14 10:56:33 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 20:24:48 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ typedef struct s_sapien
 
 int	ft_atoi(char *str);
 int	check_num_argv(int ac);
+int	ft_strlen(char *str);
+int	check_args(char **av);
 
 #endif
