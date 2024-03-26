@@ -14,9 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	if (check_num_argv(ac))
-		return (0);
-	if (check_args(ac, av))
-		return (0);
+	t_sapien	s;
+
+	if (check_num_argv(ac) || check_args(ac, av))
+		return (1);
+	init_dining(&s, av);
 	return (0);
 }
