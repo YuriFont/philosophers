@@ -15,15 +15,9 @@
 int	check_num_argv(int ac)
 {
 	if (ac < 5)
-	{
-		printf("Error: few arguments\n");
-		return (1);
-	}
+		return (throw_error("Few arguments"));
 	else if (ac > 6)
-	{
-		printf("Error: many arguments\n");
-		return (1);
-	}
+		return (throw_error("Many arguments"));
 	return (0);
 }
 
