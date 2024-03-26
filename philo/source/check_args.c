@@ -23,17 +23,17 @@ int	check_num_argv(int ac)
 
 int	check_args(int ac, char **av)
 {
-	if (ft_atol(av[1]) < 1)
+	if (ft_atol(av[1]) < 1 || ft_atol(av[1]) > INT_MAX)
 		return (throw_error("The number of philosophers must be at least 1"));
-	if (ft_atol(av[2]) < 0)
+	if (ft_atol(av[2]) < 0 || ft_atol(av[2]) > INT_MAX)
 		return (throw_error("Time to die cannot be negative"));
-	if (ft_atol(av[3]) < 0)
+	if (ft_atol(av[3]) < 0 || ft_atol(av[3]) > INT_MAX)
 		return (throw_error("Time to eat cannot be negative"));
-	if (ft_atol(av[4]) < 0)
+	if (ft_atol(av[4]) < 0 || ft_atol(av[4]) > INT_MAX)
 		return (throw_error("Time to sleep cannot be negative"));
 	if (ac == 6)
 	{
-		if (av[5] != NULL && ft_atol(av[5]) < 0)
+		if (ft_atol(av[5]) < 0 || ft_atol(av[5]) > INT_MAX)
 			return (throw_error("The number of times each philosopher must eat cannot be negative"));
 	}
 	return (0);

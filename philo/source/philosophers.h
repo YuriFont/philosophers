@@ -15,6 +15,7 @@
 
 # define TRUE 1
 # define FALSE 0
+# define INT_MAX 2147483647
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -37,10 +38,10 @@ typedef struct s_fork
 
 typedef struct s_sapien
 {
-	int	n_philo;
-	int	t_die;
-	int	t_eat;
-	int	t_sleep;
+	long	n_philo;
+	long	t_die;
+	long	t_eat;
+	long	t_sleep;
 	t_philo	*philos;
 	t_fork	*forks;
 }	t_sapien;
