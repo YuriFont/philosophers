@@ -12,7 +12,7 @@
 
 #include "philosophers.h"
 
-long	ft_atol(char *str)
+long	ft_atol(const char *str)
 {
 	long	n;
 	int		sign;
