@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:11 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 20:38:15 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:20:38 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,20 @@ int	check_num_argv(int ac)
 	return (0);
 }
 
-int	check_args(char **av)
+int	check_args(int ac, char **av)
 {
-	int	len;
-
 	if (ft_atoi(av[1]) < 1)
-		return (1);
+		return (throw_error("The number of philosophers must be at least 1"));
 	if (ft_atoi(av[2]) < 0)
-		return (1);
+		return (throw_error("Time to die cannot be negative"));
 	if (ft_atoi(av[3]) < 0)
-		return (1);
+		return (throw_error("Time to eat cannot be negative"));
 	if (ft_atoi(av[4]) < 0)
-		return (1);
-	len = ft_strlen(av[5]) - 1;
-	if (av[5] != NULL && (av[5][0] != '[' || av[5][len] != ']'))
-		return (1);
-	if (av[5] != NULL && ft_atoi(av[5]) < 0)
-		return (1);
+		return (throw_error("Time to sleep cannot be negative"));
+	if (ac == 6)
+	{
+		if (av[5] != NULL && ft_atoi(av[5]) < 0)
+			return (throw("The number of times each philosopher must eat cannot be negative"));
+	}
 	return (0);
 }

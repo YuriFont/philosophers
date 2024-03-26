@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 20:23:17 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:15:12 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,11 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int	throw_error(char *s)
+{
+	printf("Error:\n");
+	printf("%s\n", s);
+	return (1);
 }

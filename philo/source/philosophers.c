@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:17 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 20:41:12 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:07:07 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	printf("Olá");
 	if (check_num_argv(ac))
 		return (0);
-	printf("Olá");
-	if (check_args(av))
+	if (check_args(ac, av))
 		return (0);
 	return (0);
 }
