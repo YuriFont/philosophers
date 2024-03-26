@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 
 	if (check_num_argv(ac) || check_args(ac, av))
 		return (1);
-	init_dining(&s, av);
+	if(init_dining(&s, av))
+		return (1);
 	return (0);
 }

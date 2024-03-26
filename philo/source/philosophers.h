@@ -43,6 +43,7 @@ typedef struct s_sapien
 	long	t_eat;
 	long	t_sleep;
 	long	n_eats;
+	int	end_d;
 	t_philo	*philos;
 	t_fork	*forks;
 }	t_sapien;
@@ -51,7 +52,7 @@ long	ft_atol(char *str);
 int		check_num_argv(int ac);
 int		ft_strlen(char *str);
 int		check_args(int ac, char **av);
-int		throw_error(char *s);
+int		error(char *s);
 void	init_dining(t_sapien *s, char **av);
 
 #endif

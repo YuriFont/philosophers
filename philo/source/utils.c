@@ -47,7 +47,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	throw_error(char *s)
+int	error(char *s)
 {
 	printf("Error:\n");
 	printf("%s\n", s);
