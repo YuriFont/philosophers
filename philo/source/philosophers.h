@@ -6,12 +6,15 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 21:15:39 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:12:18 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
+
+# define TRUE 1
+# define FALSE 0
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -42,10 +45,10 @@ typedef struct s_sapien
 	t_fork	*forks;
 }	t_sapien;
 
-int	ft_atoi(char *str);
-int	check_num_argv(int ac);
-int	ft_strlen(char *str);
-int	check_args(int ac, char **av);
-int	throw_error(char *s);
+long	ft_atol(char *str);
+int		check_num_argv(int ac);
+int		ft_strlen(char *str);
+int		check_args(int ac, char **av);
+int		throw_error(char *s);
 
 #endif

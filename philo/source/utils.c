@@ -6,17 +6,17 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 21:15:12 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:38:09 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_atoi(char *str)
+long	ft_atol(char *str)
 {
-	int	n;
-	int	sign;
-	int	i;
+	long	n;
+	int		sign;
+	int		i;
 
 	i = 0;
 	n = 0;
