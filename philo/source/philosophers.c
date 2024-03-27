@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:17 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/25 21:37:06 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:53:53 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (check_num_argv(ac) || check_args(ac, av))
 		return (1);
-	if(init_dining(&s, av))
+	if (init_dining(&s, av))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/26 21:31:29 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:52:15 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ typedef pthread_mutex_t	t_mut;
 typedef struct s_philo
 {
 	int		id;
+	long	n_eats;
+	int		satisfied;
+	long	l_teat;
 }	t_philo;
 
 typedef struct s_fork
 {
 	t_mut	fork;
-	int	fork_id;
+	int		fork_id;
 }	t_fork;
 
 typedef struct s_sapien
@@ -50,17 +53,18 @@ typedef struct s_sapien
 	long	t_eat;
 	long	t_sleep;
 	long	n_eats;
-	int	end_d;
+	int		end_d;
 	t_philo	*philos;
 	t_fork	*forks;
 }	t_sapien;
 
-long	ft_atol(char *str);
+long	ft_atol(const char *str);
 int		check_num_argv(int ac);
 int		ft_strlen(char *str);
 int		check_args(int ac, char **av);
 int		error(char *s);
 int		init_dining(t_sapien *s, char **av);
-int 	handle_thread(pthread_t *thread, void *(*ft)(void *), t_sapien *s,char op);
-int 	handle_mutex(t_mut *mutex, char op);
+int		handle_thread(pthread_t *thread, void *(*ft)(void *),
+			t_sapien *s, char op);
+int		handle_mutex(t_mut *mutex, char op);
 #endif

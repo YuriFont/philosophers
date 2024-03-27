@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/26 21:02:40 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:42:56 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	filling_sapien(t_sapien *s, char **av)
 
 int	init_dining(t_sapien *s, char **av)
 {
+	int	i;
+
+	i = 0;
 	filling_sapien(s, av);
 	s->philos = malloc(sizeof(t_philo) * (s->n_philo));
 	if (!s->philos)
@@ -34,5 +37,10 @@ int	init_dining(t_sapien *s, char **av)
 	s->forks = malloc(sizeof(t_fork) * (s->n_philo));
 	if (!s->forks)
 		return (error("Error in forks malloc"));
-	
+	while (i < s->n_philo)
+	{
+		handle_mutex(&s->forks[i], INIT);
+		s->forks->fork_id = i++;
+	}
+	return (0);
 }
