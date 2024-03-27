@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/26 21:52:15 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:45:15 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,25 @@
 # include <pthread.h>
 
 typedef pthread_mutex_t	t_mut;
-
-typedef struct s_philo
-{
-	int		id;
-	long	n_eats;
-	int		satisfied;
-	long	l_teat;
-}	t_philo;
+typedef struct s_sapien t_sapien;
 
 typedef struct s_fork
 {
 	t_mut	fork;
 	int		fork_id;
 }	t_fork;
+
+typedef struct s_philo
+{
+	int			id;
+	long		n_eats;
+	int			satisfied;
+	long		l_teat;
+	t_fork		*l_fork;
+	t_fork		*r_fork;
+	pthread_t	thread;
+	t_sapien	*s;
+}	t_philo;
 
 typedef struct s_sapien
 {

@@ -4,8 +4,7 @@ PHILOSOPHERS = $(SOURCE)philosophers.c\
 		$(SOURCE)utils.c\
 		$(SOURCE)check_args.c\
 		$(SOURCE)init_dining.c\
-		$(SOURCE)handle_mutex.c\
-		$(SOURCE)handle_thread.c
+		$(SOURCE)handles.c
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
