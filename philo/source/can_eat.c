@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   can_eat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 10:56:17 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/29 20:54:56 by yufonten         ###   ########.fr       */
+/*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
+/*   Updated: 2024/03/29 21:04:28 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int ac, char **av)
+void	*fight_forks(void *arg)
 {
-	t_sapien	s;
-
-	if (check_num_argv(ac) || check_args(ac, av))
-		return (1);
-	if (init_dining(&s, av))
-		return (1);
-	if (can_eat())
-	{
 		
+}
+
+int	start(t_sapien *s)
+{
+	int	i;
+
+	i = 0;
+	if (s->n_eats == 0)
+		return ;
+	else if (s->n_philo == 1)
+		return ;
+	else
+	{
+		while (i < s->n_philo)
+		{
+			handle_thread(&s->philos[i].id, fight_forks, s, CREATE);
+			i++;
+		}
 	}
-	return (0);
 }
