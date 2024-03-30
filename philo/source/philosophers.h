@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/26 22:45:15 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:44:24 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ typedef struct s_sapien
 	long	t_sleep;
 	long	n_eats;
 	int		end_d;
+	int		e_arrive;
 	t_philo	*philos;
 	t_fork	*forks;
+	t_mut	w_mut;
 }	t_sapien;
 
 long	ft_atol(const char *str);
@@ -72,4 +74,6 @@ int		init_dining(t_sapien *s, char **av);
 int		handle_thread(pthread_t *thread, void *(*ft)(void *),
 			t_sapien *s, char op);
 int		handle_mutex(t_mut *mutex, char op);
+void	set(t_mut *mut, long *dst, long value);
+long	get(t_mut *mut, long *src);
 #endif

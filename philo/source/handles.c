@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:22:18 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/26 22:08:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:38:55 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,20 @@ int	handle_mutex(t_mut *mutex, char op)
 		return (error("Wrong option char in handle_mutex"));
 	return (0);
 }
+
+void	set(t_mut *mut, long *dst, long value)
+{
+	handle_mutex(mut, LOCK);
+	*dst = value;
+	handle_mutex(mut, UNLOCK);
+}
+
+long	get(t_mut *mut, long *src)
+{
+	long	r;
+
+	handle_mutex(mut, LOCK);
+	r = *src;
+	handle_mutex(mut, UNLOCK);
+	return (r);
+}	

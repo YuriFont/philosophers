@@ -6,15 +6,24 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/29 21:04:28 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:58:42 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+void	wait_everyone(t_sapien *s)
+{
+	while (!(int)get(&s->w_mut, (long)&s->e_arrive));
+}
+
 void	*fight_forks(void *arg)
 {
-		
+	t_philo	*philo;
+
+	philo = (t_philo *)arg;
+	wait_everyone(philo->s);
+	return (NULL);
 }
 
 int	start(t_sapien *s)
@@ -30,8 +39,9 @@ int	start(t_sapien *s)
 	{
 		while (i < s->n_philo)
 		{
-			handle_thread(&s->philos[i].id, fight_forks, s, CREATE);
+			handle_thread(&s->philos[i].id, fight_forks, &s->philos[i], CREATE);
 			i++;
 		}
 	}
+	set(&s->w_mut, &s->e_arrive, TRUE);
 }
