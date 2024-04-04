@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/29 21:58:42 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:00:54 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	wait_everyone(t_sapien *s)
 {
-	while (!(int)get(&s->w_mut, (long)&s->e_arrive));
+	while (!(int)get(&s->w_mut, (long)&s->e_arrive))
+		;
 }
 
 void	*fight_forks(void *arg)
