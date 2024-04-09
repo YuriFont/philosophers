@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/03 21:01:17 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/03 21:04:57 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ long	get_time(char measure)
 		return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
 	else if (measure == 'C')
 		return ((tv.tv_sec * 1e6) + tv.tv_usec);
+	return (42);
 }

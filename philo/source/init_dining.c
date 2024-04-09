@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/29 21:32:19 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:01:25 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	filling_sapien(t_sapien *s, char **av)
 	else
 		s->n_eats = FALSE;
 	s->end_d = FALSE;
-	s->w_ever = FALSE;
+	s->e_arrive = FALSE;
 	handle_mutex(&s->w_mut, INIT);
 }
 
