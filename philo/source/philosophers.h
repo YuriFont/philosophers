@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/03/29 21:44:24 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:05:55 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_sapien
 	long	n_eats;
 	int		end_d;
 	int		e_arrive;
+	long	s_simulation;
 	t_philo	*philos;
 	t_fork	*forks;
 	t_mut	w_mut;
@@ -76,4 +77,5 @@ int		handle_thread(pthread_t *thread, void *(*ft)(void *),
 int		handle_mutex(t_mut *mutex, char op);
 void	set(t_mut *mut, long *dst, long value);
 long	get(t_mut *mut, long *src);
+long	get_time(char measure);
 #endif

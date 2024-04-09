@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/03 21:04:57 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:08:06 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ long	get_time(char measure)
 
 	gettimeofday(&tv, NULL);
 	if (measure == 'S')
-		return (tv.tv_sec + (tv.tv_usec / 1e6));
+		return (tv.tv_sec + (tv.tv_usec / 1000000));
 	else if (measure == 'L')
-		return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
+		return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 	else if (measure == 'C')
-		return ((tv.tv_sec * 1e6) + tv.tv_usec);
+		return ((tv.tv_sec * 1000000) + tv.tv_usec);
 	return (42);
 }

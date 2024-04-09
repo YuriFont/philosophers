@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/03 20:00:54 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:24:56 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,8 @@ int	start(t_sapien *s)
 		}
 	}
 	set(&s->w_mut, &s->e_arrive, TRUE);
+	s->s_simulation = get_time('L');
+	i = 0;
+	while (i < s->n_philo)
+		handle_thread(&s->philos[i++].thread, NULL, NULL, JOIN);
 }
