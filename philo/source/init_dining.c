@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/09 11:01:25 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/10 09:39:13 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	filling_sapien(t_sapien *s, char **av)
 	if (av[5])
 		s->n_eats = ft_atol(av[5]);
 	else
-		s->n_eats = FALSE;
+		s->n_eats = -1;
 	s->end_d = FALSE;
 	s->e_arrive = FALSE;
 	handle_mutex(&s->w_mut, INIT);
@@ -46,7 +46,7 @@ void	receiving_forks(t_philo *p, t_fork *forks, int pos)
 	int	n_philo;
 
 	n_philo = p->s->n_philo;
-	if (p->id %2 != 0)
+	if (p->id % 2 != 0)
 	{
 		p->l_fork = &forks[(pos + 1) % n_philo];
 		p->r_fork = &forks[pos];

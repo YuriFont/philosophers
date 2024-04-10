@@ -6,13 +6,13 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:22:18 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/09 11:24:33 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/10 09:30:10 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	handle_thread(pthread_t *thread, void *(*ft)(void *), t_sapien *s, char op)
+int	handle_thread(pthread_t *thread, void *(*ft)(void *), void *s, char op)
 {
 	if (CREATE == op)
 		pthread_create(thread, NULL, ft, s);

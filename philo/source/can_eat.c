@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/09 11:24:56 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/10 10:34:14 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	wait_everyone(t_sapien *s)
 {
-	while (!(int)get(&s->w_mut, (long)&s->e_arrive))
-		;
+	while (!(int)get(&s->w_mut, &s->e_arrive))
+		usleep(50);
 }
 
 void	*fight_forks(void *arg)
@@ -23,7 +23,9 @@ void	*fight_forks(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	printf("Philo[%d] entrou em: %ld\n", philo->id, (get_time('C') - (philo->s->s_simulation * 1000)));
 	wait_everyone(philo->s);
+	printf("Philo[%d] saiu em: %ld\n", philo->id, (get_time('C') - (philo->s->s_simulation * 1000)));
 	return (NULL);
 }
 
@@ -33,20 +35,24 @@ int	start(t_sapien *s)
 
 	i = 0;
 	if (s->n_eats == 0)
-		return ;
+		return (1);
 	else if (s->n_philo == 1)
-		return ;
+		return (1);
 	else
 	{
+		s->s_simulation = get_time('L');
+		handle_mutex(&s->w_mut, INIT);
 		while (i < s->n_philo)
 		{
-			handle_thread(&s->philos[i].id, fight_forks, &s->philos[i], CREATE);
+			handle_thread(&s->philos[i].thread, fight_forks, &s->philos[i], CREATE);
 			i++;
 		}
 	}
 	set(&s->w_mut, &s->e_arrive, TRUE);
-	s->s_simulation = get_time('L');
 	i = 0;
 	while (i < s->n_philo)
 		handle_thread(&s->philos[i++].thread, NULL, NULL, JOIN);
+	handle_mutex(&s->w_mut, DESTROY);
+	printf("Terminou foi em : %ld\n", (get_time('C') - (s->s_simulation * 1000)));
+	return (0);
 }
