@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 20:00:55 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:38:02 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	*fight_forks(void *arg)
 
 	philo = (t_philo *)arg;
 	wait_everyone(philo->s);
+	while (!get(&philo->s->w_mut, philo->s->end_d))
+	{
+
+	}
 	return (NULL);
 }
 
@@ -39,7 +43,6 @@ int	start(t_sapien *s)
 	else
 	{
 		s->s_simulation = get_time(MILLISECONDS);
-		handle_mutex(&s->w_mut, INIT);
 		while (i < s->n_philo)
 		{
 			handle_thread(&s->philos[i].thread, fight_forks, &s->philos[i], CREATE);
@@ -50,6 +53,5 @@ int	start(t_sapien *s)
 	i = 0;
 	while (i < s->n_philo)
 		handle_thread(&s->philos[i++].thread, NULL, NULL, JOIN);
-	handle_mutex(&s->w_mut, DESTROY);
 	return (0);
 }
