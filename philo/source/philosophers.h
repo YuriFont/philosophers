@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/10 09:30:49 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:53:10 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define CREATE 'c'
 # define JOIN 'j'
 # define DETACH 'd'
+# define MILLISECONDS 'L'
+# define MICROSECONDS 'C'
+# define SECONDS 'S'
 
 # include <stdio.h>
 # include <stdlib.h>

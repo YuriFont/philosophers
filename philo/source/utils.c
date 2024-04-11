@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/09 11:08:06 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:53:50 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ long	get_time(char measure)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	if (measure == 'S')
+	if (measure == SECONDS)
 		return (tv.tv_sec + (tv.tv_usec / 1000000));
-	else if (measure == 'L')
+	else if (measure == MILLISECONDS)
 		return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-	else if (measure == 'C')
+	else if (measure == MICROSECONDS)
 		return ((tv.tv_sec * 1000000) + tv.tv_usec);
 	return (42);
 }
