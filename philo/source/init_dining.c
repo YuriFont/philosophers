@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 23:17:07 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 23:57:09 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	receiving_forks(t_philo *p, t_fork *forks, int pos)
 	int	n_philo;
 
 	n_philo = p->s->n_philo;
-	p->l_fork = &forks[(pos + 1) % n_philo];
-	p->r_fork = &forks[pos];
+	p->first_fork = &forks[(pos + 1) % n_philo];
+	p->second_fork = &forks[pos];
 	if (p->id % 2 == 0)
 	{
-		p->l_fork = &forks[pos];
-		p->r_fork = &forks[(pos + 1) % n_philo];
+		p->first_fork = &forks[pos];
+		p->second_fork = &forks[(pos + 1) % n_philo];
 	}
 }
 
@@ -67,6 +67,7 @@ void	init_philo(t_sapien *s)
 		s->philos[i].id = i + 1;
 		s->philos[i].satisfied = FALSE;
 		s->philos[i].n_eats = 0;
+		handle_mutex(&s->philos[i].handler, INIT);
 		receiving_forks(&s->philos[i], s->forks, i);
 		i++;
 	}

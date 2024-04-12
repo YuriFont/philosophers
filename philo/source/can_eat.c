@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 22:56:19 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:05:33 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@ void	wait_everyone(t_sapien *s)
 {
 	while (!get(&s->w_mut, &s->e_arrive))
 		;
+}
+
+void	eat(t_philo *philo)
+{
+	handle_mutex(&philo->first_fork->fork, LOCK);
+	write_status(TAKE_FIRST_FORK, philo);
+	handle_mutex(&philo->second_fork->fork, LOCK);
+	write_status(TAKE_SECOND_FORK, philo);
+	philo->l_teat = get_time(MILLISECONDS);
+	philo->n_eats++;
+	write_status(EATING, philo);
+	usleep(philo->s->t_eat);
+	if (philo->s->n_eats > 0 && philo->n_eats == philo->s->n_eats)
+		philo->satisfied = TRUE;
+	handle_mutex(&philo->first_fork->fork, UNLOCK);
+	handle_mutex(&philo->second_fork->fork, UNLOCK);
 }
 
 void	*fight_forks(void *arg)
@@ -29,7 +45,8 @@ void	*fight_forks(void *arg)
 		if (philo->satisfied)
 			break ;
 		eat(philo);
-		sleep(philo);
+		write_status(SLEEPING, philo);
+		usleep(philo->s->t_sleep);
 		think(philo);
 	}
 	return (NULL);

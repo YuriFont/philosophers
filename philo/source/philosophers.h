@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 23:17:55 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:07:00 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_philo
 	long		n_eats;
 	int			satisfied;
 	long		l_teat;
-	t_fork		*l_fork;
-	t_fork		*r_fork;
+	t_fork		*first_fork;
+	t_fork		*second_fork;
 	pthread_t	thread;
 	t_sapien	*s;
 }	t_philo;
@@ -93,4 +93,5 @@ void	set(t_mut *mut, long *dst, long value);
 long	get(t_mut *mut, long *src);
 long	get_time(char measure);
 int		start(t_sapien *s);
+void	write_status(t_status s, t_philo *p);
 #endif
