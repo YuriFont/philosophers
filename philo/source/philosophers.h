@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 19:53:10 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 23:17:55 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@
 
 typedef pthread_mutex_t	t_mut;
 typedef struct s_sapien t_sapien;
+
+typedef enum e_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+}	t_status;
 
 typedef struct s_fork
 {
@@ -67,6 +77,7 @@ typedef struct s_sapien
 	t_philo	*philos;
 	t_fork	*forks;
 	t_mut	w_mut;
+	t_mut	write;
 }	t_sapien;
 
 long	ft_atol(const char *str);

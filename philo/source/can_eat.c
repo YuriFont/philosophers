@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 20:38:02 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 22:56:19 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	*fight_forks(void *arg)
 	wait_everyone(philo->s);
 	while (!get(&philo->s->w_mut, philo->s->end_d))
 	{
-
+		if (philo->satisfied)
+			break ;
+		eat(philo);
+		sleep(philo);
+		think(philo);
 	}
 	return (NULL);
 }
