@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 23:36:14 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:12:22 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void	write_status(t_status s, t_philo *p)
 	current_time = get_time(MILLISECONDS);
 	handle_mutex(&p->s->write, LOCK);
 	if ((s == TAKE_FIRST_FORK || s == TAKE_SECOND_FORK)
-		&& !get(&p->s->w_mut, p->s->end_d))
+		&& !get(&p->s->w_mut, &p->s->end_d))
 		printf("%ld %d has taken a fork\n",
 			(current_time - p->s->s_simulation), p->id);
-	else if (s == EATING && !get(&p->s->w_mut, p->s->end_d))
+	else if (s == EATING && !get(&p->s->w_mut, &p->s->end_d))
 		printf("%ld %d is eating\n", (current_time - p->s->s_simulation), p->id);
-	else if (s == SLEEPING && !get(&p->s->w_mut, p->s->end_d))
+	else if (s == SLEEPING && !get(&p->s->w_mut, &p->s->end_d))
 		printf("%ld %d is sleeping\n",
 			(current_time - p->s->s_simulation), p->id);
-	else if (s == THINKING && !get(&p->s->w_mut, p->s->end_d))
+	else if (s == THINKING && !get(&p->s->w_mut, &p->s->end_d))
 		printf("%ld %d is thinking\n",
 			(current_time - p->s->s_simulation), p->id);
 	else if (s == DIED)

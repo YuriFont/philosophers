@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/12 00:07:00 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:11:17 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_sapien
 	long	t_eat;
 	long	t_sleep;
 	long	n_eats;
-	int		end_d;
+	long		end_d;
 	long		e_arrive;
 	long	s_simulation;
 	t_philo	*philos;
