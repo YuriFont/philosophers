@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 23:33:15 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/11 23:36:14 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	write_status(t_status s, t_philo *p)
 {
 	long	current_time;
 
+	if (p->satisfied)
+		return ;
 	current_time = get_time(MILLISECONDS);
 	handle_mutex(&p->s->write, LOCK);
 	if ((s == TAKE_FIRST_FORK || s == TAKE_SECOND_FORK)
