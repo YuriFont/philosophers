@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/11 23:57:09 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/12 00:07:40 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	init_philo(t_sapien *s)
 		s->philos[i].id = i + 1;
 		s->philos[i].satisfied = FALSE;
 		s->philos[i].n_eats = 0;
-		handle_mutex(&s->philos[i].handler, INIT);
 		receiving_forks(&s->philos[i], s->forks, i);
 		i++;
 	}
