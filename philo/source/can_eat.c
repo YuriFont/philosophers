@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/12 00:14:02 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:09:50 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	wait_everyone(t_sapien *s)
 {
-	while (!get(&s->w_mut, &s->e_arrive))
+	while (get(&s->w_mut, &s->e_arrive) < s->n_philo)
 		;
 }
 
@@ -36,18 +36,20 @@ void	eat(t_philo *philo)
 
 void	*fight_forks(void *arg)
 {
-	t_philo	*philo;
+	t_philo	*p;
 
-	philo = (t_philo *)arg;
-	wait_everyone(philo->s);
-	while (!get(&philo->s->w_mut, &philo->s->end_d))
+	p = (t_philo *)arg;
+	set(&p->s->w_mut, &p->s->e_arrive,
+		(get(&p->s->w_mut, &p->s->e_arrive) + 1));
+	wait_everyone(p->s);
+	while (!get(&p->s->w_mut, &p->s->end_d))
 	{
-		if (philo->satisfied)
+		if (p->satisfied)
 			break ;
-		eat(philo);
-		write_status(SLEEPING, philo);
-		usleep(philo->s->t_sleep);
-		write_status(THINKING, philo);
+		eat(p);
+		write_status(SLEEPING, p);
+		usleep(p->s->t_sleep);
+		write_status(THINKING, p);
 	}
 	return (NULL);
 }
@@ -70,7 +72,6 @@ int	start(t_sapien *s)
 			i++;
 		}
 	}
-	set(&s->w_mut, &s->e_arrive, TRUE);
 	i = 0;
 	while (i < s->n_philo)
 		handle_thread(&s->philos[i++].thread, NULL, NULL, JOIN);
