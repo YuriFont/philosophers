@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:11 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/04 12:18:41 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:29:50 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	check_args(int ac, char **av)
 		return (error("Parameter error"));
 	if (ac == 6)
 	{
-		if (!ft_is_digit(av[5]) || ft_atol(av[5]) < 0 ||
-			ft_atol(av[5]) > INT_MAX)
+		if (!ft_is_digit(av[5]) || ft_atol(av[5]) < 0
+			|| ft_atol(av[5]) > INT_MAX)
 			return (error("Parameter error"));
 	}
 	return (0);
