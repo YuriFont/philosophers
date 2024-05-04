@@ -6,11 +6,22 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:11 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/10 09:10:29 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:11:44 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+int	ft_is_digit(char *s)
+{
+	while (*s)
+	{
+		if (*s < '0' || *s > '9')
+			return (0);
+		*s++;
+	}
+	return (1);
+}
 
 int	check_num_argv(int ac)
 {
