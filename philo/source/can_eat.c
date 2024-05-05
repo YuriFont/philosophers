@@ -6,25 +6,17 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 13:28:59 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 14:09:16 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	wait_everyone(t_sapien *s)
-{
-	while (get(&s->w_mut, &s->e_arrive) < s->n_philo)
-		;
-}
-
 void	ethic_at_dinner(t_sapien *s)
 {
 	int	i;
 
-	if (get(&s->w_mut, &s->e_arrive) != s->n_philo)
-		return (error("Error creating threads."));
-	while (!dinner_is_over(s))
+	while (!get(&s->w_mut, &s->end_d))
 	{
 		i = 0;
 		while (i < s->n_philo)
@@ -40,20 +32,10 @@ void	ethic_at_dinner(t_sapien *s)
 	}
 }
 
-void	eat(t_philo *philo)
+void	wait_everyone(t_sapien *s)
 {
-	handle_mutex(&philo->first_fork->fork, LOCK);
-	write_status(TAKE_FIRST_FORK, philo);
-	handle_mutex(&philo->second_fork->fork, LOCK);
-	write_status(TAKE_SECOND_FORK, philo);
-	philo->l_teat = get_time(MILLISECONDS);
-	philo->n_eats++;
-	write_status(EATING, philo);
-	usleep(philo->s->t_eat);
-	if (philo->s->n_eats > 0 && philo->n_eats == philo->s->n_eats)
-		philo->satisfied = TRUE;
-	handle_mutex(&philo->first_fork->fork, UNLOCK);
-	handle_mutex(&philo->second_fork->fork, UNLOCK);
+	while (get(&s->w_mut, &s->e_arrive) < s->n_philo)
+		;
 }
 
 void	*fight_forks(void *arg)
@@ -69,8 +51,7 @@ void	*fight_forks(void *arg)
 		if (p->satisfied)
 			break ;
 		eat(p);
-		write_status(SLEEPING, p);
-		usleep(p->s->t_sleep);
+		sleeping(p);
 		write_status(THINKING, p);
 		ethic_at_dinner(p->s);
 	}
@@ -83,7 +64,7 @@ int	start(t_sapien *s)
 
 	i = 0;
 	if (s->n_eats == 0)
-		return (1);
+		return (0);
 	else if (s->n_philo == 1)
 		return (1);
 	else

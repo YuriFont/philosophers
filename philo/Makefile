@@ -5,7 +5,8 @@ PHILOSOPHERS = $(SOURCE)philosophers.c\
 		$(SOURCE)check_args.c\
 		$(SOURCE)init_dining.c\
 		$(SOURCE)handles.c\
-		$(SOURCE)can_eat.c
+		$(SOURCE)can_eat.c\
+		$(SOURCE)actions.c
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf

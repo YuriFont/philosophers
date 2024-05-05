@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 13:07:42 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 13:48:24 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,6 @@ long	get_time(char measure);
 int		start(t_sapien *s);
 void	write_status(t_status s, t_philo *p);
 long	philo_died(t_philo *philo);
+void	eat(t_philo *philo);
+void    sleeping(t_philo *p);
 #endif
