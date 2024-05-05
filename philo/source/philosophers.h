@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 13:48:24 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:04:53 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_sapien
 	t_fork	*forks;
 	t_mut	w_mut;
 	t_mut	write;
+	pthread_t	monitor;
 }	t_sapien;
 
 long	ft_atol(const char *str);
@@ -98,4 +99,6 @@ void	write_status(t_status s, t_philo *p);
 long	philo_died(t_philo *philo);
 void	eat(t_philo *philo);
 void    sleeping(t_philo *p);
+void	ethic_at_dinner(t_sapien *s);
+void	wait_everyone(t_sapien *s);
 #endif
