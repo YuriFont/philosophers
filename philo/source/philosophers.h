@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/12 00:11:17 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 13:07:42 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_philo
 	t_fork		*second_fork;
 	pthread_t	thread;
 	t_sapien	*s;
+	t_mut		p_mut;
 }	t_philo;
 
 typedef struct s_sapien
@@ -94,4 +95,5 @@ long	get(t_mut *mut, long *src);
 long	get_time(char measure);
 int		start(t_sapien *s);
 void	write_status(t_status s, t_philo *p);
+long	philo_died(t_philo *philo);
 #endif

@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 21:22:18 by yufonten          #+#    #+#             */
-/*   Updated: 2024/04/10 09:30:10 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 13:12:27 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ long	get(t_mut *mut, long *src)
 	r = *src;
 	handle_mutex(mut, UNLOCK);
 	return (r);
-}	
+}
+
+long	philo_died(t_philo *p)
+{
+	long	elapsed_time;
+	long	time_to_died;
+
+	if (get(&p->p_mut, &p->satisfied))
+		return (FALSE);
+	elapsed_time = get_time(MILLISECONDS) - p->l_teat;
+	time_to_died = p->s->t_die / 1000;
+	if (elapsed_time >= time_to_died)
+		return (TRUE);
+	return (FALSE);
+}

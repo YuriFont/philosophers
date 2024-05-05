@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/04 16:23:49 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 13:28:59 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,28 @@ void	wait_everyone(t_sapien *s)
 {
 	while (get(&s->w_mut, &s->e_arrive) < s->n_philo)
 		;
+}
+
+void	ethic_at_dinner(t_sapien *s)
+{
+	int	i;
+
+	if (get(&s->w_mut, &s->e_arrive) != s->n_philo)
+		return (error("Error creating threads."));
+	while (!dinner_is_over(s))
+	{
+		i = 0;
+		while (i < s->n_philo)
+		{
+			if (philo_died(&s->philos[i]))
+			{
+				set(&s->w_mut, &s->end_d, TRUE);
+				write_status(DIED, &s->philos[i]);
+				return ;
+			}
+			i++;
+		}
+	}
 }
 
 void	eat(t_philo *philo)
@@ -39,10 +61,10 @@ void	*fight_forks(void *arg)
 	t_philo	*p;
 
 	p = (t_philo *)arg;
-	set(&p->s->w_mut, &p->s->e_arrive,
-		(get(&p->s->w_mut, &p->s->e_arrive) + 1));
+	set(&p->p_mut, &p->s->e_arrive,
+		(get(&p->p_mut, &p->s->e_arrive) + 1));
 	wait_everyone(p->s);
-	while (!get(&p->s->w_mut, &p->s->end_d))
+	while (!get(&p->p_mut, &p->s->end_d))
 	{
 		if (p->satisfied)
 			break ;
@@ -50,6 +72,7 @@ void	*fight_forks(void *arg)
 		write_status(SLEEPING, p);
 		usleep(p->s->t_sleep);
 		write_status(THINKING, p);
+		ethic_at_dinner(p->s);
 	}
 	return (NULL);
 }
