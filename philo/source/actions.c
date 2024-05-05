@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 15:04:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:10:43 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	eat(t_philo *philo)
 	philo->n_eats++;
 	write_status(EATING, philo);
 	usleep(philo->s->t_eat);
+	philo->l_teat = get_time(MILLISECONDS);
 	if (philo->s->n_eats > 0 && philo->n_eats == philo->s->n_eats)
 		philo->satisfied = TRUE;
 	handle_mutex(&philo->first_fork->fork, UNLOCK);
@@ -34,24 +35,26 @@ void    sleeping(t_philo *p)
     usleep(p->s->t_sleep);
 }
 
-void	ethic_at_dinner(t_sapien *s)
+void	*ethic_at_dinner(void *arg)
 {
-	int	i;
+	int	        i;
+    t_sapien    *s;
 
+    s = (t_sapien *)arg;
 	while (!get(&s->w_mut, &s->end_d))
 	{
 		i = 0;
-		while (i < s->n_philo)
+		while (i < s->n_philo && !get(&s->w_mut, &s->end_d))
 		{
 			if (philo_died(&s->philos[i]))
 			{
 				set(&s->w_mut, &s->end_d, TRUE);
 				write_status(DIED, &s->philos[i]);
-				return ;
 			}
 			i++;
 		}
 	}
+    return (NULL);
 }
 
 void	wait_everyone(t_sapien *s)
