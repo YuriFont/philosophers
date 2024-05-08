@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 16:10:43 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:44:29 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	eat(t_philo *philo)
 	write_status(TAKE_FIRST_FORK, philo);
 	handle_mutex(&philo->second_fork->fork, LOCK);
 	write_status(TAKE_SECOND_FORK, philo);
-	philo->l_teat = get_time(MILLISECONDS);
+	set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
 	philo->n_eats++;
 	write_status(EATING, philo);
 	usleep(philo->s->t_eat);
-	philo->l_teat = get_time(MILLISECONDS);
+	set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
 	if (philo->s->n_eats > 0 && philo->n_eats == philo->s->n_eats)
-		philo->satisfied = TRUE;
+		set(&philo->p_mut, (void *)&philo->satisfied, TRUE);
 	handle_mutex(&philo->first_fork->fork, UNLOCK);
 	handle_mutex(&philo->second_fork->fork, UNLOCK);
 }
@@ -59,6 +59,6 @@ void	*ethic_at_dinner(void *arg)
 
 void	wait_everyone(t_sapien *s)
 {
-	while (get(&s->w_mut, &s->e_arrive) < s->n_philo)
+	while (get(&s->w_mut, &s->e_arrive) == FALSE)
 		;
 }

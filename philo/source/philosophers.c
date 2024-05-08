@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:17 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/05 13:29:25 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:25:08 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_dining(&s, av))
 		return (1);
-	if (start(&s))
-		return (1);
+	start(&s);
 	clean_exit(&s);
 	return (0);
 }
