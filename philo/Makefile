@@ -1,4 +1,4 @@
-NAME = philosophers
+NAME = philo
 SOURCE = ./source/
 PHILOSOPHERS = $(SOURCE)philosophers.c\
 		$(SOURCE)utils.c\
