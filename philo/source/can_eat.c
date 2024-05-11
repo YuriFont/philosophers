@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/07 21:41:06 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:09:09 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*fight_forks(void *arg)
 	p = (t_philo *)arg;
 	set(&p->p_mut, &p->l_teat, get_time(MILLISECONDS));
 	set(&p->s->w_mut, &p->s->e_arrive,
-		(get(&p->p_mut, &p->s->e_arrive) + 1));
+		(get(&p->s->w_mut, &p->s->e_arrive) + 1));
 	wait_everyone(p->s);
 	while (!get(&p->p_mut, &p->s->end_d))
 	{
