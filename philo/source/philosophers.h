@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/07 21:25:06 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:21:58 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_philo
 {
 	int			id;
 	long		n_eats;
-	int			satisfied;
+	long		satisfied;
 	long		l_teat;
 	t_fork		*first_fork;
 	t_fork		*second_fork;

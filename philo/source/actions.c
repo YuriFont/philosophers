@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/11 14:23:37 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:24:54 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	eat(t_philo *philo)
 	write_status(TAKE_FIRST_FORK, philo);
 	handle_mutex(&philo->second_fork->fork, LOCK);
 	write_status(TAKE_SECOND_FORK, philo);
-	set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
+	//set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
 	philo->n_eats++;
 	write_status(EATING, philo);
 	usleep(philo->s->t_eat);
 	set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
 	if (philo->s->n_eats > 0 && philo->n_eats == philo->s->n_eats)
-		set(&philo->p_mut, (void *)&philo->satisfied, TRUE);
+		set(&philo->p_mut, &philo->satisfied, TRUE);
 	handle_mutex(&philo->first_fork->fork, UNLOCK);
 	handle_mutex(&philo->second_fork->fork, UNLOCK);
 }
