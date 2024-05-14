@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/13 20:28:02 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:11:51 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*fight_forks(void *arg)
 	set(&p->s->w_mut, &p->s->e_arrive,
 		(get(&p->s->w_mut, &p->s->e_arrive) + 1));
 	wait_everyone(p->s);
-	while (!get(&p->p_mut, &p->s->end_d))
+	while (!get(&p->s->w_mut, &p->s->end_d))
 	{
 		if (p->satisfied)
 			break ;
@@ -49,16 +49,21 @@ void	start(t_sapien *s)
 	int			i;
 
 	i = -1;
-	s->s_simulation = get_time(MILLISECONDS);
 	if (s->n_eats == 0)
 		return ;
 	else if (s->n_philo == 1)
+	{
+		s->s_simulation = get_time(MILLISECONDS);
 		handle_thread(&s->philos[0].thread, alone_dinning,
 			&s->philos[0], CREATE);
+	}
 	else
+	{
+		s->s_simulation = get_time(MILLISECONDS);
 		while (++i < s->n_philo)
 			handle_thread(&s->philos[i].thread, fight_forks,
 				&s->philos[i], CREATE);
+	}
 	handle_thread(&s->monitor, ethic_at_dinner, s, CREATE);
 	set(&s->w_mut, &s->e_arrive, TRUE);
 	i = -1;
