@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 15:48:13 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:14:09 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ void	sleeping(t_philo *p)
 {
 	write_status(SLEEPING, p);
 	usleep(p->s->t_sleep);
+}
+
+void	thinking(t_philo *p)
+{
+	long	t_eat;
+	long	t_sleep;
+	long	t_think;
+
+	write_status(THINKING, p);
+	if (p->s->n_philo % 2 == 0)
+		return ;
+	t_eat = p->s->t_eat;
+	t_sleep = p->s->t_sleep;
+	t_think = t_eat * 2 - t_sleep;
+	if (t_think < 0)
+		t_think = 0;
+	usleep(t_think * 0.42);
 }
 
 void	*ethic_at_dinner(void *arg)

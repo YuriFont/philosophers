@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 15:45:31 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:17:07 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,5 @@ void	eat(t_philo *philo);
 void	sleeping(t_philo *p);
 void	*ethic_at_dinner(void *arg);
 void	wait_everyone(t_sapien *s);
+void	thinking(t_philo *p);
 #endif

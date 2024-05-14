@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 15:11:51 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:14:43 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*fight_forks(void *arg)
 			break ;
 		eat(p);
 		sleeping(p);
-		write_status(THINKING, p);
+		thinking(p);
 	}
 	return (NULL);
 }
