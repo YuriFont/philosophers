@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/13 20:21:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:45:31 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # include <pthread.h>
 
 typedef pthread_mutex_t	t_mut;
-typedef struct s_sapien t_sapien;
+typedef struct s_sapien	t_sapien;
 
 typedef enum e_status
 {
@@ -67,18 +67,18 @@ typedef struct s_philo
 
 typedef struct s_sapien
 {
-	long	n_philo;
-	long	t_die;
-	long	t_eat;
-	long	t_sleep;
-	long	n_eats;
+	long		n_philo;
+	long		t_die;
+	long		t_eat;
+	long		t_sleep;
+	long		n_eats;
 	long		end_d;
 	long		e_arrive;
-	long	s_simulation;
-	t_philo	*philos;
-	t_fork	*forks;
-	t_mut	w_mut;
-	t_mut	write;
+	long		s_simulation;
+	t_philo		*philos;
+	t_fork		*forks;
+	t_mut		w_mut;
+	t_mut		write;
 	pthread_t	monitor;
 }	t_sapien;
 
@@ -98,7 +98,7 @@ void	start(t_sapien *s);
 void	write_status(t_status s, t_philo *p);
 long	philo_died(t_philo *philo);
 void	eat(t_philo *philo);
-void    sleeping(t_philo *p);
+void	sleeping(t_philo *p);
 void	*ethic_at_dinner(void *arg);
 void	wait_everyone(t_sapien *s);
 #endif

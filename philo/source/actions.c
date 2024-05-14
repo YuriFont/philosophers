@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 15:13:48 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:48:13 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	eat(t_philo *philo)
 	handle_mutex(&philo->second_fork->fork, UNLOCK);
 }
 
-void    sleeping(t_philo *p)
+void	sleeping(t_philo *p)
 {
-    write_status(SLEEPING, p);
-    usleep(p->s->t_sleep);
+	write_status(SLEEPING, p);
+	usleep(p->s->t_sleep);
 }
 
 void	*ethic_at_dinner(void *arg)
 {
-	int	        i;
-    t_sapien    *s;
+	int			i;
+	t_sapien	*s;
 
-    s = (t_sapien *)arg;
+	s = (t_sapien *)arg;
 	while (!get(&s->w_mut, &s->end_d))
 	{
 		i = 0;
@@ -54,7 +54,7 @@ void	*ethic_at_dinner(void *arg)
 			i++;
 		}
 	}
-    return (NULL);
+	return (NULL);
 }
 
 void	wait_everyone(t_sapien *s)
