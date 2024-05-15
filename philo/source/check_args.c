@@ -6,13 +6,13 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:11 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/04 12:29:50 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:26:03 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_is_digit(char *s)
+static int	ft_is_digit(char *s)
 {
 	int	i;
 

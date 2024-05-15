@@ -6,13 +6,13 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:39:12 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/13 20:11:20 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:32:29 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	filling_sapien(t_sapien *s, char **av)
+static void	filling_sapien(t_sapien *s, char **av)
 {
 	s->n_philo = ft_atol(av[1]);
 	s->t_die = ft_atol(av[2]) * 1000;
@@ -28,7 +28,7 @@ void	filling_sapien(t_sapien *s, char **av)
 	handle_mutex(&s->write, INIT);
 }
 
-int	init_forks(t_sapien *s)
+static int	init_forks(t_sapien *s)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ int	init_forks(t_sapien *s)
 	return (0);
 }
 
-void	receiving_forks(t_philo *p, t_fork *forks, int pos)
+static void	receiving_forks(t_philo *p, t_fork *forks, int pos)
 {
 	int	n_philo;
 
@@ -56,7 +56,7 @@ void	receiving_forks(t_philo *p, t_fork *forks, int pos)
 	}
 }
 
-void	init_philo(t_sapien *s)
+static void	init_philo(t_sapien *s)
 {
 	int	i;
 

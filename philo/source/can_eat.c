@@ -6,13 +6,13 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:55:07 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 16:14:43 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:42:34 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*alone_dinning(void *arg)
+static void	*alone_dinning(void *arg)
 {
 	t_philo	*p;
 
@@ -24,7 +24,7 @@ void	*alone_dinning(void *arg)
 	return (NULL);
 }
 
-void	*fight_forks(void *arg)
+static void	*fight_forks(void *arg)
 {
 	t_philo	*p;
 

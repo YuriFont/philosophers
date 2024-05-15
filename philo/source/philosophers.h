@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 16:17:07 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:29:26 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,26 @@ typedef struct s_sapien
 	pthread_t	monitor;
 }	t_sapien;
 
+/* utils.c */
 long	ft_atol(const char *str);
-int		check_num_argv(int ac);
-int		ft_strlen(char *str);
-int		check_args(int ac, char **av);
 int		error(char *s);
+long	get_time(char measure);
+void	write_status(t_status s, t_philo *p);
+/* init_dining */
 int		init_dining(t_sapien *s, char **av);
+/* handles.c */
 int		handle_thread(pthread_t *thread, void *(*ft)(void *),
 			void *s, char op);
 int		handle_mutex(t_mut *mutex, char op);
-void	set(t_mut *mut, long *dst, long value);
 long	get(t_mut *mut, long *src);
-long	get_time(char measure);
-void	start(t_sapien *s);
-void	write_status(t_status s, t_philo *p);
+void	set(t_mut *mut, long *dst, long value);
 long	philo_died(t_philo *philo);
+/* check_args.c */
+int		check_num_argv(int ac);
+int		check_args(int ac, char **av);
+/* can_eat.c */
+void	start(t_sapien *s);
+/* actions.c */
 void	eat(t_philo *philo);
 void	sleeping(t_philo *p);
 void	*ethic_at_dinner(void *arg);

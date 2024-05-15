@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 13:44:08 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/14 16:14:09 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:28:06 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	eat(t_philo *philo)
 	write_status(TAKE_FIRST_FORK, philo);
 	handle_mutex(&philo->second_fork->fork, LOCK);
 	write_status(TAKE_SECOND_FORK, philo);
-	//set(&philo->p_mut, &philo->l_teat, get_time(MILLISECONDS));
 	philo->n_eats++;
 	write_status(EATING, philo);
 	usleep(philo->s->t_eat);
