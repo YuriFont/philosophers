@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:31 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/15 14:28:29 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:34:02 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,19 @@ void	write_status(t_status s, t_philo *p)
 	handle_mutex(&p->s->write, LOCK);
 	if ((s == TAKE_FIRST_FORK || s == TAKE_SECOND_FORK)
 		&& !get(&p->s->w_mut, &p->s->end_d))
-		printf("%ld %d has taken a fork\n",
+		printf("%ld %d has "YEL"taken a fork\n"reset,
 			(current_time - p->s->s_simulation), p->id);
 	else if (s == EATING && !get(&p->s->w_mut, &p->s->end_d))
-		printf("%ld %d is eating\n",
+		printf("%ld %d is "GRN"eating\n"reset,
 			(current_time - p->s->s_simulation), p->id);
 	else if (s == SLEEPING && !get(&p->s->w_mut, &p->s->end_d))
-		printf("%ld %d is sleeping\n",
+		printf("%ld %d is "MAG"sleeping\n"reset,
 			(current_time - p->s->s_simulation), p->id);
 	else if (s == THINKING && !get(&p->s->w_mut, &p->s->end_d))
-		printf("%ld %d is thinking\n",
+		printf("%ld %d is "BLU"thinking\n"reset,
 			(current_time - p->s->s_simulation), p->id);
 	else if (s == DIED)
-		printf("%ld %d died\n", (current_time - p->s->s_simulation), p->id);
+		printf("%ld %d "RED"died\n"reset,
+			(current_time - p->s->s_simulation), p->id);
 	handle_mutex(&p->s->write, UNLOCK);
 }

@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:56:27 by yufonten          #+#    #+#             */
-/*   Updated: 2024/05/15 15:29:26 by yufonten         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:31:45 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # define MILLISECONDS 'L'
 # define MICROSECONDS 'C'
 # define SECONDS 'S'
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define BLU "\e[0;34m"
+#define YEL "\e[0;33m"
+#define MAG "\e[0;35m"
+#define reset "\e[0m"
 
 # include <stdio.h>
 # include <stdlib.h>
